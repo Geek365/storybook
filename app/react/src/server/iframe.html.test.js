@@ -6,7 +6,10 @@ describe('server.urlsFromAssets', () => {
   });
 
   it('should return multiple assets', () => {
-    const fixture = { manager: 'static/manager.a.bundle.js', preview: ['static/preview.x.bundle.js', 'static/preview.y.css', 'static/preview.y.css.map'] };
+    const fixture = {
+      manager: 'static/manager.a.bundle.js',
+      preview: ['static/preview.x.bundle.js', 'static/preview.y.css', 'static/preview.y.css.map'],
+    };
     expect(urlsFromAssets(fixture)).toEqual({
       js: ['static/preview.x.bundle.js'],
       css: ['static/preview.y.css'],

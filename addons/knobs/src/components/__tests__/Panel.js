@@ -23,18 +23,28 @@ describe('Panel', () => {
     it('should read url params and set values for existing knobs', () => {
       const handlers = {};
 
-      const testChannel = { on: (e, handler) => {
+      const testChannel = {
+        on: (e, handler) => {
           handlers[e] = handler;
-        }, emit: jest.fn() };
+        },
+        emit: jest.fn(),
+      };
 
       const testQueryParams = { 'knob-foo': 'test string', bar: 'some other string' };
 
-      const testApi = { getQueryParam: key => testQueryParams[key], setQueryParams: jest.fn(), onStory: jest.fn() };
+      const testApi = {
+        getQueryParam: key => testQueryParams[key],
+        setQueryParams: jest.fn(),
+        onStory: jest.fn(),
+      };
 
       shallow(<Panel channel={testChannel} api={testApi} />);
       const setKnobsHandler = handlers['addon:knobs:setKnobs'];
 
-      const knobs = { foo: { name: 'foo', value: 'default string', type: 'text' }, baz: { name: 'baz', value: 'another knob value', type: 'text' } };
+      const knobs = {
+        foo: { name: 'foo', value: 'default string', type: 'text' },
+        baz: { name: 'baz', value: 'another knob value', type: 'text' },
+      };
 
       setKnobsHandler({ knobs, timestamp: +new Date() });
       const knobFromUrl = { name: 'foo', value: testQueryParams['knob-foo'], type: 'text' };
@@ -45,18 +55,28 @@ describe('Panel', () => {
     it('should set query params when url params are already read', () => {
       const handlers = {};
 
-      const testChannel = { on: (e, handler) => {
+      const testChannel = {
+        on: (e, handler) => {
           handlers[e] = handler;
-        }, emit: jest.fn() };
+        },
+        emit: jest.fn(),
+      };
 
       const testQueryParams = { 'knob-foo': 'test string', bar: 'some other string' };
 
-      const testApi = { getQueryParam: key => testQueryParams[key], setQueryParams: jest.fn(), onStory: jest.fn() };
+      const testApi = {
+        getQueryParam: key => testQueryParams[key],
+        setQueryParams: jest.fn(),
+        onStory: jest.fn(),
+      };
 
       const wrapper = shallow(<Panel channel={testChannel} api={testApi} />);
       const setKnobsHandler = handlers['addon:knobs:setKnobs'];
 
-      const knobs = { foo: { name: 'foo', value: 'default string', type: 'text' }, baz: { name: 'baz', value: 'another knob value', type: 'text' } };
+      const knobs = {
+        foo: { name: 'foo', value: 'default string', type: 'text' },
+        baz: { name: 'baz', value: 'another knob value', type: 'text' },
+      };
 
       // Make it act like that url params are already checked
       wrapper.instance().loadedFromUrl = true;

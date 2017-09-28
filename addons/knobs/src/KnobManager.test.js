@@ -7,7 +7,10 @@ describe('KnobManager', () => {
       const testManager = new KnobManager();
 
       beforeEach(() => {
-        testManager.knobStore = { set: jest.fn(), get: () => ({ defaultValue: 'default value', value: 'current value', name: 'foo' }) };
+        testManager.knobStore = {
+          set: jest.fn(),
+          get: () => ({ defaultValue: 'default value', value: 'current value', name: 'foo' }),
+        };
       });
 
       it('should return the existing knob value when defaults match', () => {
