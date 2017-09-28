@@ -18,9 +18,7 @@ describe('babel_config', () => {
   const babelPluginReactDocgenPath = require.resolve('babel-plugin-react-docgen');
 
   it('should return the config with the extra plugins when `plugins` is an array.', () => {
-    setup({
-      files: {
-        '.babelrc': `{
+    setup({ files: { '.babelrc': `{
         "presets": [
           "env",
           "foo-preset"
@@ -28,9 +26,7 @@ describe('babel_config', () => {
         "plugins": [
           "foo-plugin"
         ]
-      }`,
-      },
-    });
+      }` } });
 
     const config = loadBabelConfig('.foo');
 
@@ -50,17 +46,13 @@ describe('babel_config', () => {
   });
 
   it('should return the config with the extra plugins when `plugins` is not an array.', () => {
-    setup({
-      files: {
-        '.babelrc': `{
+    setup({ files: { '.babelrc': `{
             "presets": [
               "env",
               "foo-preset"
             ],
             "plugins": "bar-plugin"
-          }`,
-      },
-    });
+          }` } });
 
     const config = loadBabelConfig('.bar');
 
@@ -81,16 +73,12 @@ describe('babel_config', () => {
 
   it('should return the config only with the extra plugins when `plugins` is not present.', () => {
     // Mock a `.babelrc` config file with no plugins key.
-    setup({
-      files: {
-        '.babelrc': `{
+    setup({ files: { '.babelrc': `{
             "presets": [
               "env",
               "foo-preset"
             ]
-          }`,
-      },
-    });
+          }` } });
 
     const config = loadBabelConfig('.biz');
 

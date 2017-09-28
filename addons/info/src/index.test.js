@@ -27,26 +27,13 @@ const testContext = { kind: 'addon_info', story: 'jest_test' };
 const testOptions = { propTables: false };
 
 describe('addon Info', () => {
-  const story = context => (
-    <div>
+  const story = context => <div>
       It's a {context.story} story:
-      <TestComponent
-        func={x => x + 1}
-        obj={{ a: 'a', b: 'b' }}
-        array={[1, 2, 3]}
-        number={7}
-        string={'seven'}
-        bool
-      />
-    </div>
-  );
-  const api = {
-    add: (name, fn) => fn(testContext),
-  };
+      <TestComponent func={x => x + 1} obj={{ a: 'a', b: 'b' }} array={[1, 2, 3]} number={7} string={'seven'} bool />
+    </div>;
+  const api = { add: (name, fn) => fn(testContext) };
   it('should render <Info /> and markdown', () => {
-    const Info = withInfo(
-      '# Test story \n## with markdown info \ncontaing **bold**, *cursive* text and `code`'
-    )(story);
+    const Info = withInfo('# Test story \n## with markdown info \ncontaing **bold**, *cursive* text and `code`')(story);
     ReactDOM.render(<Info />, document.createElement('div'));
   });
   it('should render with text options', () => {

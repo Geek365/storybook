@@ -50,10 +50,7 @@ describe('DataStore', () => {
   });
 
   it('set current user', () => {
-    theStore.setCurrentUser({
-      id: 'user-id',
-      name: 'user-name',
-    });
+    theStore.setCurrentUser({ id: 'user-id', name: 'user-name' });
 
     expect(theStore.user).toEqual({ id: 'user-id', name: 'user-name' });
   });
@@ -69,11 +66,7 @@ describe('DataStore', () => {
 
   it('add comment', async () => {
     theStore.setCurrentStory('Components', 'CommentList - No Comments');
-    const comment = {
-      text: 'sample comment',
-      time: 1476435982029,
-      userId: 'user-id',
-    };
+    const comment = { text: 'sample comment', time: 1476435982029, userId: 'user-id' };
 
     await theStore.addComment(comment);
 

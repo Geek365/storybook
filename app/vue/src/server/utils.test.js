@@ -15,31 +15,21 @@ const HEAD_HTML_CONTENTS = 'UNITTEST_HEAD_HTML_CONTENTS';
 
 describe('getPreviewHeadHtml', () => {
   it('returns an empty string without head.html present', () => {
-    setup({
-      files: {},
-    });
+    setup({ files: {} });
 
     const result = getPreviewHeadHtml('first');
     expect(result).toEqual('');
   });
 
   it('return contents of head.html when present', () => {
-    setup({
-      files: {
-        'head.html': HEAD_HTML_CONTENTS,
-      },
-    });
+    setup({ files: { 'head.html': HEAD_HTML_CONTENTS } });
 
     const result = getPreviewHeadHtml('second');
     expect(result).toEqual(HEAD_HTML_CONTENTS);
   });
 
   it('returns contents of preview-head.html when present', () => {
-    setup({
-      files: {
-        'preview-head.html': HEAD_HTML_CONTENTS,
-      },
-    });
+    setup({ files: { 'preview-head.html': HEAD_HTML_CONTENTS } });
 
     const result = getPreviewHeadHtml('second');
     expect(result).toEqual(HEAD_HTML_CONTENTS);
@@ -48,20 +38,14 @@ describe('getPreviewHeadHtml', () => {
 
 describe('getManagerHeadHtml', () => {
   it('returns an empty string without manager-head.html present', () => {
-    setup({
-      files: {},
-    });
+    setup({ files: {} });
 
     const result = getManagerHeadHtml('first');
     expect(result).toEqual('');
   });
 
   it('returns contents of manager-head.html when present', () => {
-    setup({
-      files: {
-        'manager-head.html': HEAD_HTML_CONTENTS,
-      },
-    });
+    setup({ files: { 'manager-head.html': HEAD_HTML_CONTENTS } });
 
     const result = getManagerHeadHtml('second');
     expect(result).toEqual(HEAD_HTML_CONTENTS);

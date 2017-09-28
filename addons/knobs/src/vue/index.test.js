@@ -6,10 +6,7 @@ describe('Vue handler', () => {
   it('Returns a component with a created function', () => {
     const testChannel = { emit: () => {} };
     const testStory = () => ({ template: '<div> testStory </div>' });
-    const testContext = {
-      kind: 'Foo',
-      story: 'bar baz',
-    };
+    const testContext = { kind: 'Foo', story: 'bar baz' };
 
     const testStore = new KnobStore();
     const component = vueHandler(testChannel, testStore)(testStory)(testContext);
@@ -24,10 +21,7 @@ describe('Vue handler', () => {
   it('Subscribes to the channel on creation', () => {
     const testChannel = { emit: () => {}, on: jest.fn() };
     const testStory = () => ({ render: h => h('div', ['testStory']) });
-    const testContext = {
-      kind: 'Foo',
-      story: 'bar baz',
-    };
+    const testContext = { kind: 'Foo', story: 'bar baz' };
 
     const testStore = new KnobStore();
     new Vue(vueHandler(testChannel, testStore)(testStory)(testContext)).$mount();

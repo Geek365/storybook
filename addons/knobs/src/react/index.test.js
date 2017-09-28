@@ -6,12 +6,9 @@ import KnobStore from '../KnobStore';
 describe('React Handler', () => {
   describe('wrapStory', () => {
     it('should contain the story and add correct props', () => {
-      const testChannel = { emit: () => {} };
+      const testChannel = { emit: jest.fn(), on: jest.fn() };
       const testStory = () => <div id="test-story">Test Content</div>;
-      const testContext = {
-        kind: 'Foo',
-        story: 'bar baz',
-      };
+      const testContext = { kind: 'Foo', story: 'bar baz' };
 
       const testStore = new KnobStore();
 

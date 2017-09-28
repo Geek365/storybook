@@ -49,11 +49,9 @@ describe('preview.client_api', () => {
       const api = new ClientAPI({});
       let data;
 
-      api.setAddon({
-        aa() {
+      api.setAddon({ aa() {
           data = 'foo';
-        },
-      });
+        } });
 
       api.storiesOf('none', module).aa();
       expect(data).toBe('foo');
@@ -63,17 +61,13 @@ describe('preview.client_api', () => {
       const api = new ClientAPI({});
       const data = [];
 
-      api.setAddon({
-        aa() {
+      api.setAddon({ aa() {
           data.push('foo');
-        },
-      });
+        } });
 
-      api.setAddon({
-        bb() {
+      api.setAddon({ bb() {
           data.push('bar');
-        },
-      });
+        } });
 
       api
         .storiesOf('none', module)
@@ -86,11 +80,9 @@ describe('preview.client_api', () => {
       const api = new ClientAPI({});
       let data;
 
-      api.setAddon({
-        aa() {
+      api.setAddon({ aa() {
           data = typeof this.add;
-        },
-      });
+        } });
 
       api.storiesOf('none', module).aa();
       expect(data).toBe('function');
@@ -100,17 +92,13 @@ describe('preview.client_api', () => {
       const api = new ClientAPI({});
       let data;
 
-      api.setAddon({
-        aa() {
+      api.setAddon({ aa() {
           data = 'foo';
-        },
-      });
+        } });
 
-      api.setAddon({
-        bb() {
+      api.setAddon({ bb() {
           this.aa();
-        },
-      });
+        } });
 
       api.storiesOf('none', module).bb();
       expect(data).toBe('foo');
@@ -121,11 +109,9 @@ describe('preview.client_api', () => {
       const kind = 'dfdwf3e3';
       let data;
 
-      api.setAddon({
-        aa() {
+      api.setAddon({ aa() {
           data = this.kind;
-        },
-      });
+        } });
 
       api.storiesOf(kind, module).aa();
       expect(data).toBe(kind);
@@ -216,12 +202,7 @@ describe('preview.client_api', () => {
     it('should return storybook with stories', () => {
       const storyStore = new StoryStore();
       const api = new ClientAPI({ storyStore });
-      const functions = {
-        'story-1.1': () => 'story-1.1',
-        'story-1.2': () => 'story-1.2',
-        'story-2.1': () => 'story-2.1',
-        'story-2.2': () => 'story-2.2',
-      };
+      const functions = { 'story-1.1': () => 'story-1.1', 'story-1.2': () => 'story-1.2', 'story-2.1': () => 'story-2.1', 'story-2.2': () => 'story-2.2' };
       const kind1 = api.storiesOf('kind-1', module);
       kind1.add('story-1.1', functions['story-1.1']);
       kind1.add('story-1.2', functions['story-1.2']);
